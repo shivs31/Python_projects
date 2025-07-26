@@ -6,7 +6,7 @@ MY_LONG = -0.127758 # Your longitude
 
 # To get the ISS location at +5 or -5 degrees 
 def is_iss_overhead():
-    response = requests.get(url="http://api.open-notify.org/iss-now.json")
+    response = requests.get(url=ISS_link)
     response.raise_for_status()
     data = response.json()
 
@@ -25,7 +25,7 @@ def is_night():
         "lng": MY_LONG,
         "formatted": 0,
     }
-    response = requests.get("https://api.sunrise-sunset.org/json", params=parameters)
+    response = requests.get(ur_api_link, params=parameters)
     response.raise_for_status()
     data = response.json()
     sunrise = int(data["results"]["sunrise"].split("T")[1].split(":")[0])
